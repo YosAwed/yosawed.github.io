@@ -1,0 +1,168 @@
+/* グローバルスタイル */
+:root {
+  --primary-color: #0070f3;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --light-bg: #f8f9fa;
+  --dark-bg: #212529;
+  --light-text: #f8f9fa;
+  --dark-text: #212529;
+  --transition-speed: 0.3s;
+}
+
+/* ライトモード（デフォルト） */
+body.light-mode {
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* ダークモード */
+body.dark-mode {
+  background-color: var(--dark-bg);
+  color: var(--light-text);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* ダークモード時のカード */
+.dark-mode .card {
+  background-color: #2c3034;
+  border-color: #373b3e;
+  color: #ffffff;
+}
+
+/* ダークモード時のカード内のテキスト */
+.dark-mode .card-title,
+.dark-mode .card-text {
+  color: #ffffff;
+}
+
+/* ダークモード時のテキスト色（ミュートされたテキスト） */
+.dark-mode .text-muted {
+  color: #adb5bd !important;
+}
+
+/* ダークモード時のフォーム要素 */
+.dark-mode .form-control {
+  background-color: #2c3034;
+  border-color: #373b3e;
+  color: var(--light-text);
+}
+
+/* ダークモード時のナビゲーション */
+.dark-mode .navbar {
+  background-color: #2c3034 !important;
+}
+
+/* ダークモード時のドロップダウン */
+.dark-mode .dropdown-menu {
+  background-color: #2c3034;
+  border-color: #373b3e;
+}
+
+.dark-mode .dropdown-item {
+  color: var(--light-text);
+}
+
+.dark-mode .dropdown-item:hover {
+  background-color: #373b3e;
+}
+
+/* ダークモード時のバッジ */
+.dark-mode .badge {
+  background-color: #495057;
+  color: #ffffff;
+}
+
+/* ダークモード時のリンク */
+.dark-mode a:not(.btn):not(.nav-link):not(.dropdown-item) {
+  color: #8bb9fe;
+}
+
+.dark-mode a:not(.btn):not(.nav-link):not(.dropdown-item):hover {
+  color: #a8c7fe;
+}
+
+/* ダークモード時のボタン */
+.dark-mode .btn-outline-dark {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+
+.dark-mode .btn-outline-dark:hover {
+  color: #212529;
+  background-color: #ffffff;
+}
+
+/* ダークモード時のプログレスバー背景 */
+.dark-mode .progress {
+  background-color: #495057;
+}
+
+/* セクション間の余白 */
+section {
+  padding: 5rem 0;
+}
+
+/* アニメーション */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* スキルバー */
+.skill-bar {
+  height: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.dark-mode .skill-bar {
+  background-color: #495057;
+}
+
+.skill-progress {
+  height: 100%;
+  border-radius: 5px;
+  background-color: var(--primary-color);
+  transition: width 1s ease;
+}
+
+/* ブログ記事スタイル */
+.blog-content h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+/* ダークモード時のプロジェクトセクション */
+.dark-mode .bg-light {
+  background-color: #343a40 !important;
+}
+
+/* レスポンシブ調整 */
+@media (max-width: 768px) {
+  section {
+    padding: 3rem 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+}
