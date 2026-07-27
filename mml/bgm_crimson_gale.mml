@@ -1,0 +1,142 @@
+# ============================================================
+#  "Crimson Gale"  -  16-bar loop BGM for MewMMLPad
+#  Key: A minor (harmonic-minor V) / 4-4 / T132
+# ------------------------------------------------------------
+#  Chord loop (1 bar each, loops seamlessly at bar 16 -> bar 1)
+#    1 Am   2 F    3 C    4 G
+#    5 Am   6 F    7 Dm   8 E
+#    9 Am  10 G   11 F   12 E     <- descending "Andalusian" hook
+#   13 Dm  14 C   15 F   16 E     <- turnaround back to Am
+# ------------------------------------------------------------
+#  Tracks (A-P = MIDI ch 1-16)
+#    A  ch1  Lead melody          @81 saw lead
+#    B  ch2  Counter melody       @80 square lead
+#    C  ch3  Pad (moving 2nds)    @89 warm pad
+#    D  ch4  16th arpeggio        @27 clean guitar
+#    E  ch5  Bass                 @39 synth bass 2
+#    F  ch6  Brass stabs          @62 brass section
+#    J  ch10 Drums: kick/snare/tom      (GM drum channel)
+#    K  ch11 Drums: hi-hat/cymbal       (assign a drum kit here too)
+#
+#  NOTE: an MML track is monophonic, so the kit is split across two
+#  tracks. Crashes/rides live on K (with the hats) so they never
+#  collide with the kick/snare on J.
+# ============================================================
+
+A T132
+
+ABCDEF  {=*} $BendRange=2 $Glissando=16
+
+A @81 L8  Q8 V104 PC       ; lead
+B @80 L8  Q7 V76  PR36     ; counter
+C @89 L2  Q8 V58  PL30     ; pad
+D @27 L16 Q6 V68  PR44     ; arpeggio
+E @39 L8  Q6 V102 PC       ; bass
+F @62 L8  Q5 V84  PL44     ; brass stabs
+J @0  L16 Q8 V108 PC LV28  ; drums 1 (ch10)
+K @0  L16 Q8 V92  PC       ; drums 2 (ch11)
+
+
+; ------------------------------------------------------------
+; drum patterns  (L16, 16 slots = 1 bar)
+; ------------------------------------------------------------
+% DkA    N36 R8. N38 R8 N36 R8 N36 R16 N38 R16 N36 R16
+% DkB    N36 R8. N38 R8 N36 R8 N36 R16 N38 ( N38 ) N36 R16
+% DkC    N36 R16 N36 R16 N38 R8 N36 R8 N36 R16 N38 R16 N36 R16
+% DkD    N36 R8. N38 R8 N36 R8 N38 R16 N38 R16 N36 R16
+% DkFilA N36 R8. N38 R8 N36 R8 N38 R16 N38 N38 N36 N36
+% DkFilB N36 R8. N38 R8 N36 R16 N50 N48 N47 N45 N43 N41 N38
+
+% HhQ V92 N42 V56 N42 V72 N42 V58 N42
+% HhE V92 N42 V56 N42 V72 N42 V84 N46
+% HhO V92 N42 V56 N42 V84 N46 R16
+% Rd8 V92 N51 R16 V64 N51 R16
+
+
+; ============================================================
+;  bars 1-4    Am  F  C  G
+; ============================================================
+A o5 V104 r8 e8 a8 b8 >c4. <b8      a4 g8^a8 >c4 <a8 g8
+A o5      g4 e8^g8 a4. b8           >c8 <b8 a8 g8 a4 r4
+B o4 V74  a2 >c4 <b8 a8             f2 a4 >c8 <a8
+B o4      e2 g4 a8 g8               d4. g8 b8 >d8 <b8 a8
+C o4 V54  e2 a2                     f2 a2
+C o4      e2 g2                     d2 g2
+D o4 V62  [a >c e c <]3 a >c e g <  [f a >c <a ]3 f a >c e <
+D o4      [e g >c <g ]3 e g >c d <  [d g b >d <]3 d g b >c <
+E o2 V100 a4 a8 a8 a8 >e8 <a8 g8    f4 f8 f8 f8 >c8 <f8 g8
+E o3      c4 c8 c8 e8 g8 e8 d8      o2 g4 g8 g8 b8 >d8 <b8 g8
+F o4 V78  r8 a8 r4 a8 r8 a4         r8 a8 r4 a8 r8 a4
+F o4      r8 g8 r4 g8 r8 g4         r8 g8 r4 g8 r8 g4
+J V104    %DkA                      %DkA
+J V108    %DkB                      %DkA
+K V112 N49 V56 N42 V72 N42 V58 N42  [%HhQ]2 %HhE
+K         [%HhQ]3 %HhE
+K         [%HhQ]4
+K         [%HhQ]3 %HhE
+
+; ============================================================
+;  bars 5-8    Am  F  Dm  E
+; ============================================================
+A o5 V112 r8 e8 a8 b8 >c4. d8       <a4. g8 f4 g8^a8
+A o5      >d4 <a8 >d8 <a8 f8 g8 a8  b4. >c8 <b8 g+8 e4
+B o4 V78  a2 >c4 <b8 a8             f2 a8 >c8 <a4
+B o4      d2 f4 a4                  e2 g+4 b4
+C o4 V58  e2 a2                     f2 a2
+C o4      f2 a2                     g+2 b2
+D o4 V66  [a >c e c <]3 a >c e g <  [f a >c <a ]3 f a >c e <
+D o4      [d f a >d <]3 d f a g+    [e g+ b >e <]4
+E o2 V102 a4 a8 a8 a8 >e8 <a8 g8    f4 f8 f8 f8 >c8 <f8 e8
+E o2      d4 d8 d8 a8 >d8 <a8 f8    e4 e8 e8 b8 >e8 <b8 >c8
+F o4 V82  r4 a8 a8 r8 a8 a4         r4 a8 a8 r8 a8 a4
+F o4      r4 a8 a8 r8 a8 a4         r4 b8 b8 r8 b8 b4
+J V106    %DkA                      %DkC
+J V110    %DkB                      %DkFilA
+K         [%HhQ]3 %HhE
+K         %HhQ %HhO %HhQ %HhE
+K         [%HhQ]3 %HhE
+K         [%HhQ]2 %HhO %HhE
+
+; ============================================================
+;  bars 9-12   Am  G  F  E     (climax / ride cymbal)
+; ============================================================
+A o5 V120 >d8_e4. c8 <a8 >c8 <b8 a8 b4. a8 g4 a8^b8
+A o5      >c4. <a8 g8^f8 g8 a8      b4 g+8 b8 >e4 <b8 g+8
+B o4 V84  >c2 <a4 b4                b2 g4 a4
+B o4      a2 f4 a4                  g+2 e4 b4
+C o4 V64  e2 a2                     d2 g2
+C o4      c2 a2                     e2 g+2
+D o4 V74  [a >c e c <]3 a >c e g <  [d g b >d <]3 d g b >c <
+D o4      [f a >c <a ]3 f a >c e <  [e g+ b >e <]4
+E o2 V108 a4 a8 a8 a8 >e8 <a8 b8    g4 g8 g8 g8 >d8 <g8 f8
+E o2      f4 f8 f8 f8 >c8 <f8 e8    e4 e8 e8 e8 b8 >e8 <e8
+F o4 V90  a8 r8 a8 r8 a4 r4         g8 r8 g8 r8 g4 r4
+F o4      a8 r8 a8 r8 a4 r4         g+8 r8 g+8 r8 g+4 r4
+J V112    %DkA                      %DkA
+J V114    %DkB                      %DkD
+K V112 N49 R8. %Rd8 %Rd8 %Rd8
+K         [%Rd8]4
+K         [%Rd8]4
+K         [%Rd8]3 V96 N51 R16 V96 N51 V104 N51
+
+; ============================================================
+;  bars 13-16  Dm  C  F  E     (turnaround -> loop to bar 1)
+; ============================================================
+A o5 V114 a4. f8 a4 >d8 <a8         g4. e8 g4 a8^b8
+A o5      >c4 <a8 >c8 <a8 g8 f8 e8  g+4 b8 >c8 <b8 a8 g+8 r8
+B o4 V80  a2 f4 a4                  g2 e4 g4
+B o4      a2 >c4 <a4                g+2 b2
+C o4 V60  f2 a2                     e2 g2
+C o4      f2 a2                     e2 g+2
+D o4 V70  [d f a >d <]4             [e g >c <g ]4
+D o4      [f a >c e <]4             [e g+ b >e <]3 e g+ b >c <
+E o2 V104 d4 d8 d8 a8 >d8 <a8 f8    o3 c4 c8 c8 e8 g8 e8 d8
+E o2      f4 f8 f8 f8 >c8 <f8 g8    e4 e8 e8 b8 >e8 <b8 g+8
+F o4 V86  a2 a8 a8 a4               g2 g8 g8 g4
+F o4      a8 a8 a8 a8 a4 r4         g+1
+J V110    %DkA                      %DkB
+J V116    %DkC                      %DkFilB
+K         [%HhQ]3 %HhE
+K         [%HhQ]4
+K         %HhQ %HhO %HhQ %HhE
+K         [%HhQ]2 V72 N42 R8. R4
